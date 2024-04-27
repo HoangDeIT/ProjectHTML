@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -15,17 +16,17 @@
             <a href="#">SUBSCRIBT NOW</a>
         </div>
         <div class="nav-bar">
-            <ul>
-                <li>
-                    <a href="#">About me</a>
-                </li>
-                <li>
-                    <a href="#">Đăng nhập</a>
-                </li>
-                <li>
-                    <a href="#">Đăng kí</a>
-                </li>
-            </ul>
+            <nav>
+
+                <a href="#">About me</a>
+
+
+                <a href="#" class="login-btn">Đăng nhập</a>
+
+
+                <a href="#" class="signup-btn">Đăng kí</a>
+
+            </nav>
             <div class="search">
                 <input type="search" spellcheck="false" placeholder="Search something...">
                 <img src="/images/magnifying-glass-solid.svg" alt="search-icon">
@@ -34,8 +35,8 @@
         </div>
         <div class="site-bar">
             <img src="/images/Science-Logo.png" alt="logo">
-            <ul>
-                <li class="dropdown">
+            <nav>
+                <div class="dropdown">
                     <p>Chủ đề khác <span>&#x22C1</span></p>
                     <div class="dropdown-content">
                         <a href="#">Hiện tượng lạ</a>
@@ -43,17 +44,73 @@
                         <a href="#">Khoa học lượng tử</a>
                         <a href="#">Hóa học đời sống</a>
                     </div>
-                </li>
-                <li><a href="#">Con Người</a></li>
-                <li><a href="#">Con Người</a></li>
-                <li><a href="#">Cuộc Sống</a></li>
-                <li><a href="#">Trái Đất</a></li>
-                <li><a href="#">Vũ Trụ</a></li>
-                <li><a href="#">Vật Lí</a></li>
-                <li><a href="#">Công Nghệ</a></li>
-            </ul>
+                </div>
+                <a href="#">Con Người</a>
+                <a href="#">Con Người</a>
+                <a href="#">Cuộc Sống</a>
+                <a href="#">Trái Đất</a>
+                <a href="#">Vũ Trụ</a>
+                <a href="#">Vật Lí</a>
+                <a href="#">Công Nghệ</a>
+                <a href="#">Báo yêu thích</a>
+            </nav>
         </div>
     </header>
+    <div class="blur hidden"></div> <!--Lam mo-->
+    <div class="login-form hidden signup-login-form">
+        <span class="close-btn">&#10761;</span>
+        <h1>Login</h1>
+        <form action="#">
+            <div class="data">
+                <label for="">Email or Phone</label>
+                <input type="text" placeholder="Nhập tên">
+            </div>
+            <div class="data">
+                <label for="">Password</label>
+                <input type="password" placeholder="Nhập mật khẩu của bạn">
+            </div>
+            <div class="forgot-pass"><a href="#">Quên mật khẩu ?</a></div>
+            <div class="submit">
+                <div class="inner"></div>
+                <input type="Submit" value="Login">
+            </div>
+            <div class="signup-link">Chưa có tài khoản ? <a class="signup-btn">Đăng kí ngay</a></div>
+        </form>
+    </div>
+
+    <div class="signup-form hidden signup-login-form">
+        <span class="close-btn">&#10761;</span>
+        <h1>Sign Up</h1>
+        <form action="">
+            <div class="data">
+                <label for="">Email or Phone</label>
+                <input type="text" placeholder="Email hoặc số điện thoại">
+            </div>
+            <div class="data">
+                <label for="">Name</label>
+                <input type="text" placeholder="Họ tên">
+            </div>
+            <div class="data">
+                <label for="">Birthday</label>
+                <input type="date">
+            </div>
+            <div class="data">
+                <label for="">Password</label>
+                <input type="password" placeholder="Nhập mật khẩu của bạn">
+            </div>
+            <div class="data">
+                <label for="">Confirm Password</label>
+                <input type="password" placeholder="Nhập lại mật khẩu của bạn">
+            </div>
+            <div class="forgot-pass"><a href="#">Quên mật khẩu ?</a></div>
+            <div class="submit">
+                <div class="inner"></div>
+                <input type="Submit" value="Sign Up">
+            </div>
+            <div class="signup-link">Đã có tài khoản ? <a class="login-btn">Đăng kí ngay</a></div>
+
+        </form>
+    </div>
     <main>
         <section class="main-section">
             <article class="main-article">
@@ -119,66 +176,74 @@
             <!-- <h1>Trending News</h1> -->
 
             <div>
-                <img src="/images/chevron-left-solid.svg" alt="">
-                <div>
+                <img src="/images/chevron-left-solid.svg" alt="" draggable="false" id="left">
+                <div class="news-cards">
                     <article>
+
+                        <img src="/images/ThuNghiemTangSang.jpg" alt="" draggable="false">
+                        <p>Trái Đất</p>
                         <a href="">
-                            <img src="/images/ThuNghiemTangSang.jpg" alt="">
-                            <p>Trái Đất</p>
                             <h1>Thử nghiệm tăng sáng mây giúp Trái Đất nguội đi</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/NASA.jpg" alt="" draggable="false">
+                        <p>Vũ Trụ</p>
                         <a href="">
-                            <img src="/images/NASA.jpg" alt="">
-                            <p>Vũ Trụ</p>
                             <h1>NASA tìm ra lỗi trục trặc trên tàu vũ trụ cách 24 tỷ km</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/BienChet.jpg" alt="" draggable="false">
+                        <p>Trái Đất</p>
                         <a href="">
-                            <img src="/images/BienChet.jpg" alt="">
-                            <p>Trái Đất</p>
                             <h1>Tại sao Biển Chết siêu mặn?</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/TrongRau.jpg" alt="" draggable="false">
+                        <p>Sinh Học</p>
                         <a href="">
-                            <img src="/images/TrongRau.jpg" alt="">
-                            <p>Sinh Học</p>
                             <h1>Trồng rau thủy canh ứng dụng IoT năng suất tăng gấp 10 lần</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/Al.jpg" alt="" draggable="false">
+                        <p>Công Nghệ</p>
                         <a href="">
-                            <img src="/images/Al.jpg" alt="">
-                            <p>Công Nghệ</p>
                             <h1>AI - từ cỗ máy tự hành đến công nghệ cuộc sống</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/SaoHoa.jpg" alt="" draggable="false">
+                        <p>Vũ Trụ</p>
                         <a href="">
-                            <img src="/images/SaoHoa.jpg" alt="">
-                            <p>Vũ Trụ</p>
                             <h1>Mất bao lâu để con người đi bộ 1 vòng quanh sao Hỏa?</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/TenLua.jpg" alt="" draggable="false">
+                        <p>Vũ Trụ</p>
                         <a href="">
-                            <img src="/images/TenLua.jpg" alt="">
-                            <p>Vũ Trụ</p>
                             <h1>Công ty Trung Quốc sẽ vận chuyển hàng bằng tên lửa</h1>
                         </a>
                     </article>
                     <article>
+
+                        <img src="/images/TenLua3D.jpg" alt="" draggable="false">
+                        <p>Công Nghệ</p>
                         <a href="">
-                            <img src="/images/TenLua3D.jpg" alt="">
-                            <p>Công Nghệ</p>
                             <h1>Tên lửa in 3D đầu tiên trên thế giới hủy phóng</h1>
                         </a>
                     </article>
                 </div>
-                <img src="/images/angle-right-solid.svg" alt="">
+                <img src="/images/angle-right-solid.svg" alt="" id="right">
             </div>
         </section>
     </main>

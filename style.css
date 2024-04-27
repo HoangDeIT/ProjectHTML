@@ -2,7 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
 
+body {
+    position: relative;
 }
 
 /*Header*/
@@ -53,12 +56,12 @@ header .nav-bar {
     border-bottom: 1px solid black;
 }
 
-header .nav-bar ul {
+header .nav-bar nav {
     display: flex;
     align-items: center;
 }
 
-header .nav-bar ul li {
+header .nav-bar nav a {
     list-style: none;
     margin: 0 10px 0 10px;
     font-size: 19px;
@@ -93,13 +96,13 @@ header .site-bar {
     border-bottom: 1px solid black;
 }
 
-header .site-bar ul li {
+header .site-bar nav a {
     list-style: none;
     margin: 0 12px 0 12px;
     font-size: 18px;
 }
 
-header .site-bar ul {
+header .site-bar nav {
     display: flex;
 
 }
@@ -117,7 +120,7 @@ footer .contact-footer a {
 }
 
 /*DROP DONW BAR HEADER*/
-header .site-bar ul li .dropdown-content {
+header .site-bar nav div .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -126,7 +129,7 @@ header .site-bar ul li .dropdown-content {
     z-index: 1;
 }
 
-header .site-bar ul li .dropdown-content a {
+header .site-bar nav div .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -291,10 +294,12 @@ main .main-section small {
 main .section-trendnews article {
     width: 332px;
     height: 350px;
+    scroll-snap-align: start;
 }
 
 main .section-trendnews article img {
     width: 332px;
+    height: 70%;
 }
 
 main .section-trendnews {
@@ -313,20 +318,23 @@ main .section-trendnews div {
 
 }
 
-main .section-trendnews div div {
+main .section-trendnews div .news-cards {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 4) - 12px);
+    grid-auto-columns: calc((100% / 4));
     gap: 16px;
     overflow-x: auto;
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: 0;
 }
 
 .section-trendnews div>img {
-    height: 50px;
-    width: 50px;
-    background: grey;
+    height: 40px;
+    width: 40px;
+    background: white;
     text-align: center;
     line-height: 50px;
     border-radius: 50%;
@@ -335,14 +343,143 @@ main .section-trendnews div div {
     top: 50%;
     transform: translateY(-50%);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
 }
 
 .section-trendnews div>img:first-child {
-    left: -22px;
+    left: -40px;
 }
 
 .section-trendnews div>img:last-child {
-    right: -22px;
+    right: -40px;
+}
+
+
+
+.section-trendnews .dragging {
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+}
+
+/*Pop up sign up sign out*/
+.signup-login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 410px;
+    padding: 30px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.blur {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrosp-filter: blur(5px);
+    z-index: 5;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.signup-login-form h1 {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.signup-login-form form .data {
+    height: 45px;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.signup-login form .data label {
+    font-size: 18px;
+}
+
+.signup-login-form form .data input {
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.signup-login-form form .data input:focus {
+    border-color: #3498db;
+    border-bottom-width: 2px;
+}
+
+form .submit {
+    margin: 30px 0;
+    height: 45px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-login-form form .submit .inner {
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    z-index: -1;
+    background-image: linear-gradient(to right, cyan, purple);
+    transition: all 0.4s;
+}
+
+.signup-login-form form .submit input[type=submit] {
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+form .submit:hover .inner {
+    left: 0;
+}
+
+.signup-login-form form .forgot-pass {
+    margin-top: -8px;
+}
+
+.signup-login-form form .forgot-pass a,
+.signup-login-form form .signup-link a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.signup-login-form form .forgot-pass a:hover,
+.signup-login-form form .signup-link a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
 }
 
 /*Ông code dưới đây */
