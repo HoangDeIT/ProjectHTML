@@ -482,4 +482,18 @@ form .submit:hover .inner {
     cursor: pointer;
 }
 
+.signup-login-form.error,
+.error {
+    border: 1px solid red !important;
+}
+
+.sucess {
+    border: 1px solid green !important;
+}
+
+.signup-form .data span {
+    color: red;
+
+}
+
 /*Ông code dưới đây */
