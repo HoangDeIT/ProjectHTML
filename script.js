@@ -55,7 +55,11 @@ const blur = document.querySelector('.blur')
 const myacc_btn = document.querySelector('.myacc-btn');
 const myacc_form = document.querySelector('.popup-myacc')
 const logout_btn = document.querySelector('.logout-btn');
-
+const forgot_btn = document.querySelector('.login-form .forgot-pass-btn');
+const forgot_form = document.querySelector('.forgot-pass');
+const forgot_form_data = document.querySelectorAll('.forgot-pass .data input')
+const recoverPass_form = document.querySelector('.recoverPass-form');
+const recoverPass_form_data = document.querySelectorAll('.recoverPass-form .data input');
 login_btn.forEach((btn, index) => {
     btn.addEventListener('click', () => {
         login_form.classList.remove('hidden');
@@ -69,7 +73,6 @@ signup_btn.forEach((btn, index) => {
         blur.classList.remove('hidden');
         index && login_form.classList.add('hidden');
 
-
     })
 })
 
@@ -79,6 +82,8 @@ close_btn.forEach((btn) => {
         signup_form.classList.add('hidden');
         sucess_popup.classList.add('hidden');
         myacc_form.classList.add('hidden');
+        forgot_form.classList.add('hidden');
+        recoverPass_form.classList.add('hidden');
         blur.classList.add('hidden');
     })
 
@@ -88,15 +93,19 @@ myacc_btn.addEventListener('click', () => {
     myacc_form.classList.remove('hidden')
     blur.classList.remove('hidden')
 });
-
+//Forgot pass
+forgot_btn.addEventListener('click', () => {
+    forgot_form.classList.remove('hidden');
+})
 //User data
 const UserData_login = document.querySelectorAll('.login-form .data input');
 const UserData_signup = document.querySelectorAll('.signup-form .data input');
 
 const Submit_btn = document.querySelectorAll('.signup-login-form .submit input[type=submit]');
-const errorMess = document.querySelectorAll('.signup-form form .data span')
+const errorMess = document.querySelectorAll('.signup-login-form form .data span')
 const popup_myacc_data = document.querySelectorAll('.popup-myacc form .data input')
 let checkun = false, checke = false, checkn = false, checkbd = false, checkp = false, checkcp = false;
+let recover_User = '';
 const UserNamecheck = (username) => {
     let dataUser = localStorage.getItem('dataUser');
     if (dataUser === undefined || dataUser === null) return false;
@@ -195,7 +204,7 @@ Submit_btn.forEach((btn, index) => btn.addEventListener('click', () => {
             alert("Kiểm tra lại UserName hoặc password");
             UserData_login.forEach((user) => user.classList.add('error'));
         }
-    } else {
+    } else if (index === 1) {
         if (checkn && checkun && checkp && checkcp && checkbd && checke) {
             let newUser = {
                 "UserName": UserData_signup[0].value,
@@ -317,6 +326,86 @@ UserData_signup.forEach((data, index) => {
         default:
             console.log('error');
             break;
+    }
+})
+//Xử lí quên password
+const check_data_forgot_form = (User, Email, Name, BirthDay) => {
+    let dataUser = localStorage.getItem('dataUser');
+    let userDataArray = JSON.parse(dataUser);
+    let check = false;
+    userDataArray.forEach((user) => {
+        if (user.UserName.trim() === User) {
+            if (user.Email === Email && user.Name === Name && user.BirthDay.toString() === BirthDay.toString()) check = true;
+
+        }
+    }
+    )
+    return check;
+}
+
+forgot_form.querySelector('.submit input').addEventListener('click', () => {
+    let data = [];
+    forgot_form_data.forEach((element, index) => {
+        data[index] = element.value;
+    });
+    let check = check_data_forgot_form(data[0], data[1], data[2], data[3]) ? true : false;
+    if (check) {
+        recover_User = data[0];
+        forgot_form.classList.add('hidden');
+        recoverPass_form.classList.remove('hidden');
+        login_form.classList.add('hidden');
+        recoverPass_form_data.forEach((form, index) => {
+            if (index === 0) {
+                form.addEventListener('input', () => {
+                    if (!checkPassword(recoverPass_form_data[index].value)) {
+                        recoverPass_form_data[index].classList.add('error');
+                        recoverPass_form_data[index].classList.remove('sucess');
+                        errorMess[6].innerHTML = 'Mật khẩu không hợp lệ'
+                        checkp = false;
+                    } else {
+                        recoverPass_form_data[index].classList.add('sucess');
+                        recoverPass_form_data[index].classList.remove('error');
+                        errorMess[6].innerHTML = '';
+                        checkp = true;
+                    }
+                })
+            } else {
+                form.addEventListener('input', () => {
+                    if (recoverPass_form_data[index].value !== recoverPass_form_data[index - 1].value) {
+                        recoverPass_form_data[index].classList.add('error');
+                        recoverPass_form_data[index].classList.remove('sucess');
+                        errorMess[7].innerHTML = 'Mật khẩu không trùng'
+                        checkcp = false;
+                    } else {
+                        recoverPass_form_data[index].classList.add('sucess');
+                        recoverPass_form_data[index].classList.remove('error');
+                        errorMess[7].innerHTML = '';
+                        checkcp = true;
+                    }
+                })
+            }
+        })
+
+
+    }
+    else alert("Thông tin không hợp lệ")
+}
+)
+recoverPass_form.querySelector('.submit input').addEventListener('click', () => {
+    if (checkp && checkcp) {
+        let dataUser = localStorage.getItem('dataUser');
+        let dataUserArray = JSON.parse(dataUser);
+        dataUserArray.forEach(element => {
+            if (element.UserName === recover_User) {
+                element.Password = recoverPass_form_data[0].value;
+            }
+        });
+        localStorage.setItem('dataUser', JSON.stringify(dataUserArray));
+        alert("Cập nhật mật khẩu thành công");
+        recoverPass_form.classList.add('hidden');
+        blur.classList.add('hidden');
+    } else {
+        alert("Không hợp lệ, vui lòng kiểm tra lại");
     }
 })
 

@@ -1,0 +1,152 @@
+main .main-section {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    gap: 20px;
+    grid-template-areas:
+        'main-article side-article1'
+        'main-article side-article2'
+        'main-article side-article3';
+    width: 75%;
+    margin: auto;
+    border-top: 1px solid lightgray;
+    padding: 3vh 0 3vh 0;
+    border-bottom: 1px solid lightgray;
+}
+
+main h1:first-child {
+    margin: 2vh 0 1vh 15%;
+}
+
+main .main-section .main-article {
+    grid-area: main-article;
+    border-right: 1px solid lightgray;
+}
+
+main .main-section .side-article-1 {
+    grid-area: side-article1;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 15px;
+}
+
+main .main-section .side-article-2 {
+    grid-area: side-article2;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 15px;
+}
+
+main .main-section .side-article-3 {
+    grid-area: side-article3;
+}
+
+main .main-section .main-article {
+    display: flex;
+}
+
+main .main-section .main-article img {
+    width: 600px;
+    height: 400px;
+    margin-right: 20px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+main .main-section a {
+    color: black;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+main .main-section a:hover {
+    color: cyan;
+    text-decoration: none;
+}
+
+main .main-section .main-article a h2 {
+    font-size: 50px;
+}
+
+main .main-section article span {
+    color: blue;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+main .main-section .main-article div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main .main-section .main-article div p {
+    font-size: 30px;
+}
+
+main .more-news {
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+        'section aside';
+    grid-template-columns: 75% 25%;
+    gap: 20px;
+}
+
+main .more-news aside {
+    grid-area: aside;
+}
+
+main .more-news section {
+    grid-area: section;
+}
+
+main .more-news section article {
+    display: flex;
+    margin: 30px 0;
+}
+
+main .more-news section article img {
+    width: 30%;
+    margin-right: 20px;
+}
+
+main .more-news section article a {
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+main .more-news section article a:hover {
+    text-decoration: none;
+    color: cyan;
+
+
+}
+
+.header-more-news {
+    margin-left: 150px;
+}
+
+main .more-news section article span {
+    color: blue;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+main .more-news aside {
+    top: 0;
+    position: sticky;
+}
+
+main .more-news aside div img {
+    width: 100%;
+}
+
+main .more-news aside div {
+    margin: 20px;
+}
+
+main .more-news aside div a {
+    text-decoration: none;
+    color: black;
+}
