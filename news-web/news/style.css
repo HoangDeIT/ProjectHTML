@@ -1,0 +1,167 @@
+main {
+    display: grid;
+    grid-template-areas: 'section aside';
+    grid-template-columns: 75% 25%;
+    width: 60%;
+    margin: auto;
+    background-color: rgb(252, 250, 246);
+    gap: 20px;
+}
+
+main section {
+    grid-area: section;
+}
+
+
+main section div {
+    display: flex;
+    position: relative;
+    margin: 20px 0 40px 0;
+}
+
+main section div span:first-child {
+    position: absolute;
+    left: 0px;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: darkblue;
+}
+
+main section div span:nth-child(2) {
+    position: absolute;
+    right: 0px;
+    font-size: large;
+    color: darkblue;
+
+}
+
+main aside {
+    grid-area: aside;
+}
+
+main section>h1 {
+    font-family: Merriweather, serif;
+    font-size: 50px;
+    line-height: 70px;
+}
+
+main section p {
+    font-family: arial;
+    margin: 20px 0 20px 0;
+    font-size: 20px;
+}
+
+main section img {
+    width: 100%;
+}
+
+main section figcaption {
+    font-style: italic;
+
+}
+
+/*Aside css*/
+
+main aside div img {
+    width: 100%;
+}
+
+main aside div div {
+    margin: 20px;
+}
+
+main aside div div a {
+    text-decoration: none;
+    color: black;
+}
+
+main aside div {
+    top: 10px;
+    position: sticky;
+}
+
+.hidden {
+    display: none !important;
+}
+
+section small {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+/*Button like*/
+/*Code tham khảo youtube*/
+.button-like {
+    border: 2px solid #8a8a8a;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 1rem;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3rem;
+    color: #8a8a8a;
+    transition: all ease 0.4s;
+}
+
+.button-like span {
+    margin-left: 0.5rem;
+}
+
+.button-like .fa,
+.button-like span {
+    transition: all ease 0.4s;
+}
+
+.button-like:focus {
+    background-color: transparent;
+}
+
+.button-like:focus .fa,
+.button-like:focus span {
+    color: #8a8a8a;
+}
+
+.button-like:hover {
+    border-color: #cc4b37;
+    background-color: transparent;
+}
+
+.button-like:hover .fa,
+.button-like:hover span {
+    color: #cc4b37;
+}
+
+.liked {
+    background-color: #cc4b37;
+    border-color: #cc4b37;
+}
+
+.liked .fa,
+.liked span {
+    color: #fefefe;
+}
+
+.liked:focus {
+    background-color: #cc4b37;
+}
+
+.liked:focus .fa,
+.liked:focus span {
+    color: #fefefe;
+}
+
+.liked:hover {
+    background-color: #cc4b37;
+    border-color: #cc4b37;
+}
+
+.liked:hover .fa,
+.liked:hover span {
+    color: #fefefe;
+}

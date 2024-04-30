@@ -327,3 +327,7 @@ form .submit:hover .inner {
 .signup-form .data span {
     color: red;
 }
+
+.signup-login-form {
+    border-radius: 20px;
+}

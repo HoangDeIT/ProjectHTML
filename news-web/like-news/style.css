@@ -82,7 +82,7 @@ main .main-section .main-article div p {
     font-size: 30px;
 }
 
-main .more-news {
+main .like-news {
     width: 75%;
     margin: auto;
     display: grid;
@@ -92,31 +92,31 @@ main .more-news {
     gap: 20px;
 }
 
-main .more-news aside {
+main .like-news aside {
     grid-area: aside;
 }
 
-main .more-news section {
+main .like-news section {
     grid-area: section;
 }
 
-main .more-news section article {
+main .like-news section article {
     display: flex;
     margin: 30px 0;
 }
 
-main .more-news section article img {
+main .like-news section article img {
     width: 30%;
     margin-right: 20px;
 }
 
-main .more-news section article a {
+main .like-news section article a {
     text-decoration: none;
     color: black;
     transition: 0.5s;
 }
 
-main .more-news section article a:hover {
+main .like-news section article a:hover {
     text-decoration: none;
     color: cyan;
 
@@ -127,27 +127,27 @@ main .more-news section article a:hover {
     margin-left: 150px;
 }
 
-main .more-news section article span {
+main .like-news section article span {
     color: blue;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-main .more-news aside {
+main .like-news aside {
     top: 0;
     position: sticky;
     display: block;
 }
 
-main .more-news aside div img {
+main .like-news aside div img {
     width: 100%;
 }
 
-main .more-news aside div {
+main .like-news aside div {
     margin: 20px;
 }
 
-main .more-news aside div a {
+main .like-news aside div a {
     text-decoration: none;
     color: black;
 }

@@ -1,10 +1,21 @@
 //Search Box
-const searchHidden = () => {
-    search[0].firstElementChild.classList.contains("hidden") ? search[0].firstElementChild.classList.remove("hidden") : search[0].firstElementChild.classList.add("hidden");
-}
-const search = document.getElementsByClassName('search')
 
-search[0].lastElementChild.addEventListener("click", () => { searchHidden() });
+const search_btn = document.querySelector('.search img');
+const search_box = document.querySelector('.search input');
+search_btn.addEventListener("click", () => {
+
+    if (search_box.classList.contains('hidden')) {
+        search_box.classList.remove('hidden');
+    } else {
+        if (search_box.value === '') alert('Bạn chưa nhập gì');
+        else {
+            let search_content = search_box.value;
+            localStorage.setItem('search-content', search_content);
+            window.location.assign("news-web/news-search/search.html");
+        }
+    }
+
+});
 
 //Trend news
 
@@ -131,6 +142,11 @@ const LoginCheck = (username, pass) => {
                     popup_myacc_data[1].value = user.Email;
                     popup_myacc_data[2].value = user.Name;
                     popup_myacc_data[3].value = user.BirthDay;
+                    let UserNow = {
+                        UserOn: true,
+                        UserName: user.UserName
+                    }
+                    localStorage.setItem('UserNow', JSON.stringify(UserNow));
                 }
             }
         })
@@ -147,6 +163,7 @@ logout_btn.addEventListener('click', () => {
     signup_btn[0].classList.remove('hidden');
     logout_btn.classList.add('hidden');
     myacc_btn.classList.add('hidden');
+    localStorage.setItem('UserNow', JSON.stringify({ UserOn: false, UserName: '' }));
 })
 //Xử lí Đăng kí người dùng
 const checkUserName = (username) => {
@@ -211,7 +228,8 @@ Submit_btn.forEach((btn, index) => btn.addEventListener('click', () => {
                 "Email": UserData_signup[1].value,
                 "Name": UserData_signup[2].value,
                 "BirthDay": UserData_signup[3].value,
-                "Password": UserData_signup[4].value
+                "Password": UserData_signup[4].value,
+                "LikeNews": []
             }
             UserData_signup.forEach((item) => {
                 item.value = '';
@@ -408,7 +426,113 @@ recoverPass_form.querySelector('.submit input').addEventListener('click', () => 
         alert("Không hợp lệ, vui lòng kiểm tra lại");
     }
 })
+//Kiem tra nguoi dung co dang nhap truoc do chua
+window.addEventListener('load', () => {
+    let UserNow = JSON.parse(localStorage.getItem('UserNow'));
+    if ((UserNow?.UserOn !== null && UserNow?.UserOn !== undefined) && UserNow.UserOn) {
 
+        let dataUser = localStorage.getItem('dataUser');
+        let userDataArray = JSON.parse(dataUser);
+        userDataArray.forEach((user) => {
+            if (user.UserName.trim() === UserNow.UserName) {
+                popup_myacc_data[0].value = user.UserName;
+                popup_myacc_data[1].value = user.Email;
+                popup_myacc_data[2].value = user.Name;
+                popup_myacc_data[3].value = user.BirthDay;
 
+                login_form.classList.add('hidden');
+                login_btn[0].classList.add('hidden');
+                signup_btn[0].classList.add('hidden');
+                logout_btn.classList.remove('hidden');
+                myacc_btn.classList.remove('hidden');
+                UserData_login.forEach((item) => {
+                    item.value = '';
+                })
+                blur.classList.add('hidden')
+                setTimeout(() => {
+                    sucess_popup.classList.add('hidden')
+                }, 7000);
 
+            }
+        })
 
+    } else {
+        popup_myacc_data[0].value = '';
+        popup_myacc_data[1].value = '';
+        popup_myacc_data[2].value = '';
+        popup_myacc_data[3].value = '';
+        login_btn[0].classList.remove('hidden');
+        signup_btn[0].classList.remove('hidden');
+        logout_btn.classList.add('hidden');
+        myacc_btn.classList.add('hidden');
+        localStorage.setItem('UserNow', JSON.stringify({ UserOn: false, UserName: '' }));
+    }
+})
+//Like news
+let News = [{
+    ID: "ID0001",
+    Name: "Tại sao xe điện mặt trời không xuất hiện trên đường?",
+    Topic: "Đời Sống",
+    Summary: "Những trở ngại trong việc sản xuất điện tại chỗ và giá thành lắp đặt khiến xe điện mặt trời rất khó phổ biến ở hiện tại.",
+    SrcImg: "../../images/Xe-dien.jpg",
+    SrcNews: "../news/taisaoxedien.html",
+    By: "Nguyen De"
+},
+{
+    ID: "ID0002",
+    Name: "Cha đẻ của khẩu súng máy đầu tiên trên thế giới",
+    Topic: "Lịch Sử",
+    Summary: "Súng Puckle ra đời vào năm 1718 có thể bắn 9 phát liên tục nhưng không thành công về mặt thương mại do vấn đề kíp nổ",
+    SrcImg: "../../images/Sung.jpg",
+    SrcNews: "../news/Chadecuakhausung.html",
+    By: "Nguyen De"
+},
+{
+    ID: "ID0003",
+    Name: "Lần đầu quan sát 'cầu vồng' ở ngoại hành tinh",
+    Topic: "Vũ Trụ",
+    Summary: "Kính viễn vọng không gian CHEOPS phát hiện những vòng tròn ánh sáng đồng tâm với màu cầu vồng ở WASP-76b, ngoại hành tinh có mưa sắt.",
+    SrcImg: "../../images/HanhTinh.jpg",
+    SrcNews: "../news/Landauquansat.html",
+    By: "Nguyen De"
+},
+{
+    ID: "ID0004",
+    Name: "Thử nghiệm tăng sáng mây giúp Trái Đất nguội đi",
+    Topic: "Trái Đất",
+    Summary: "Nhóm chuyên gia tại Đại học Washington dùng máy phun chuyên dụng phun hạt muối biển siêu nhỏ lên mây trên biển, giúp chuyển hướng ánh sáng Mặt Trời.",
+    SrcImg: "../../images/ThuNghiemTangSang.jpg",
+    SrcNews: "../news/Thunghiemtangsang.html",
+    By: "Nguyen De"
+},
+{
+    ID: "ID0005",
+    Name: "NASA tìm ra lỗi trục trặc trên tàu vũ trụ cách 24 tỷ km",
+    Topic: "Vũ Trụ",
+    Summary: "Tàu Voyager 1 truyền dữ liệu vô nghĩa từ cuối tháng 11 năm ngoái do một con chip trên tàu có thể bị hạt năng lượng cao va trúng.",
+    SrcImg: "../../images/NASA.jpg",
+    SrcNews: "../news/Nasatimraloitructrac.html",
+    By: "Nguyen De"
+},
+{
+    ID: "ID0006",
+    Name: "Tại sao Biển Chết siêu mặn?",
+    Topic: "Trái Đất",
+    Summary: "Biển Chết có độ mặn cao gấp gần 10 lần đại dương do nước bay hơi để lại muối tích tụ trong nước và lắng đọng dưới đáy hồ.",
+    SrcImg: "../../images/BienChet.jpg",
+    SrcNews: "../news/Taisaobienchetsieuman.html",
+    By: "Nguyen De"
+}
+]
+
+window.addEventListener('load', () => {
+    localStorage.setItem('News', JSON.stringify(News));
+})
+const like_news_btn = document.querySelector('.like-news-btn');
+like_news_btn.addEventListener('click', (e) => {
+    let UserNow = JSON.parse(localStorage.getItem('UserNow'));
+    if (!UserNow.UserOn) {
+        e.preventDefault();
+        alert('Vui lòng đăng nhập để xem bài báo yêu thích của tài khoản')
+    }
+})

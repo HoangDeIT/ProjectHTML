@@ -82,7 +82,7 @@ main .main-section .main-article div p {
     font-size: 30px;
 }
 
-main .more-news {
+main .search-news {
     width: 75%;
     margin: auto;
     display: grid;
@@ -92,31 +92,31 @@ main .more-news {
     gap: 20px;
 }
 
-main .more-news aside {
+main .search-news aside {
     grid-area: aside;
 }
 
-main .more-news section {
+main .search-news section {
     grid-area: section;
 }
 
-main .more-news section article {
+main .search-news section article {
     display: flex;
     margin: 30px 0;
 }
 
-main .more-news section article img {
+main .search-news section article img {
     width: 30%;
     margin-right: 20px;
 }
 
-main .more-news section article a {
+main .search-news section article a {
     text-decoration: none;
     color: black;
     transition: 0.5s;
 }
 
-main .more-news section article a:hover {
+main .search-news section article a:hover {
     text-decoration: none;
     color: cyan;
 
@@ -127,27 +127,40 @@ main .more-news section article a:hover {
     margin-left: 150px;
 }
 
-main .more-news section article span {
+main .search-news section article span {
     color: blue;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-main .more-news aside {
+main .search-news aside {
     top: 0;
     position: sticky;
     display: block;
 }
 
-main .more-news aside div img {
+main .search-news aside div img {
     width: 100%;
 }
 
-main .more-news aside div {
+main .search-news aside div {
     margin: 20px;
 }
 
-main .more-news aside div a {
+main .search-news aside div a {
     text-decoration: none;
     color: black;
+}
+
+main input[type=text] {
+    margin-left: 12%;
+    outline: none;
+    border: 1px solid grey;
+    padding: 12px;
+    width: 30%;
+}
+
+main input[type=text]:focus {
+
+    border: 1px solid darkblue;
 }
