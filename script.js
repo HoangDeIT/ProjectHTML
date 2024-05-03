@@ -1,3 +1,29 @@
+//reponsive
+const site_bar = document.querySelectorAll('.site-bar nav > div')
+const nav_bar = document.querySelector('.nav-signin')
+
+const checkScreen = () => {
+    if (window.innerWidth <= 1200) {
+        site_bar[1].classList.add('dropdown');
+        site_bar[1].querySelector('p').classList.remove('hidden');
+        site_bar[1].querySelector('div').classList.add('dropdown-content');
+    } else {
+        site_bar[1].classList.remove('.dropdown');
+        site_bar[1].querySelector('p').classList.add('hidden');
+        site_bar[1].querySelector('div').classList.remove('dropdown-content');
+    }
+    if (window.innerWidth <= 700) {
+        nav_bar.classList.add('dropdown');
+        nav_bar.querySelector('p').classList.remove('hidden');
+        nav_bar.querySelector('nav').classList.add('dropdown-content');
+    } else {
+        nav_bar.classList.remove('dropdown');
+        nav_bar.querySelector('p').classList.add('hidden');
+        nav_bar.querySelector('nav').classList.remove('dropdown-content');
+    }
+
+}
+window.addEventListener('resize', () => { checkScreen() })
 //Search Box
 
 const search_btn = document.querySelector('.search img');
@@ -45,7 +71,7 @@ const dragging = (e) => {
 }
 const autoplay = () => {
     setInterval(() => {
-        cards.scrollLeft = cards.offsetWidth <= cards.scrollLeft ? 0 : cards.scrollLeft + firstCardWidth
+        cards.scrollLeft = 1428 <= cards.scrollLeft ? 0 : cards.scrollLeft + firstCardWidth
         // console.log(cards.scrollLeft)
     }, 5000);
 }
@@ -527,6 +553,7 @@ let News = [{
 
 window.addEventListener('load', () => {
     localStorage.setItem('News', JSON.stringify(News));
+    checkScreen();
 })
 const like_news_btn = document.querySelector('.like-news-btn');
 like_news_btn.addEventListener('click', (e) => {
@@ -536,3 +563,4 @@ like_news_btn.addEventListener('click', (e) => {
         alert('Vui lòng đăng nhập để xem bài báo yêu thích của tài khoản')
     }
 })
+

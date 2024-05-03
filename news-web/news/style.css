@@ -165,3 +165,54 @@ section small {
 .liked:hover span {
     color: #fefefe;
 }
+
+@media only screen and (max-width: 1400px) {
+    main {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    main aside div {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    main aside div h1 a {
+        font-size: 20px;
+    }
+
+    main section h1 {
+        font-size: 50px;
+        line-height: 60px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    main {
+        width: 98%;
+    }
+
+    main aside div {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    main aside div h1 a {
+        font-size: 20px;
+    }
+
+    main section h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+}

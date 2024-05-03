@@ -35,3 +35,20 @@ window.addEventListener('load', () => {
 
 
 })
+//reponsive
+const site_bar = document.querySelectorAll('.site-bar nav > div')
+const nav_bar = document.querySelector('.nav-signin')
+
+const checkScreen = () => {
+    if (window.innerWidth <= 1200) {
+        site_bar[1].classList.add('dropdown');
+        site_bar[1].querySelector('p').classList.remove('hidden');
+        site_bar[1].querySelector('div').classList.add('dropdown-content');
+    } else {
+        site_bar[1].classList.remove('.dropdown');
+        site_bar[1].querySelector('p').classList.add('hidden');
+        site_bar[1].querySelector('div').classList.remove('dropdown-content');
+    }
+
+}
+window.addEventListener('resize', () => { checkScreen() })

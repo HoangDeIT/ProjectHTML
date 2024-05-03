@@ -76,7 +76,6 @@ main .main-section .extra-article p {
 main .main-section article div {
     position: relative;
     display: inline-block;
-    /* Để phù hợp với kích thước của hình ảnh */
 }
 
 main .main-section article div p {
@@ -84,10 +83,8 @@ main .main-section article div p {
     bottom: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.9);
-    /* Nền cho văn bản */
     padding: 5px;
     font-size: 12px;
-    /* Kích thước của văn bản */
 }
 
 main .main-section .main-article,
@@ -330,4 +327,71 @@ form .submit:hover .inner {
 
 .signup-login-form {
     border-radius: 20px;
+}
+
+/*Repoisive*/
+
+@media only screen and (max-width: 1600px) {
+    section {
+        width: 90% !important;
+    }
+
+    main .main-section {
+        display: grid;
+        grid-template-columns: 70% 30% !important;
+        grid-template-areas:
+            'main-article side-article1'
+            'main-article side-article1'
+            'main-article side-article2'
+            'main-article side-article2'
+            'extra-article1 extra-article2'
+            'extra-article3 extra-article4';
+
+    }
+
+    main .section-trendnews div .news-cards {
+        grid-auto-columns: calc((100% / 3));
+    }
+
+    main .main-section .main-article h1 {
+        font-size: 35px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+
+    main .section-trendnews div .news-cards {
+        grid-auto-columns: calc((100% / 2));
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+    main .section-trendnews div .news-cards {
+        grid-auto-columns: calc((100% / 1));
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    section {
+        width: 100% !important;
+    }
+
+    main .main-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main section .main-article h1 {
+        font-size: 20px;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 450px) {
+    main .section-trendnews div .news-cards {
+        gap: 50px;
+    }
 }
