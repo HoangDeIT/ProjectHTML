@@ -52,7 +52,7 @@ const checkScreen = () => {
 
 }
 window.addEventListener('resize', () => { checkScreen() })
-
+window.addEventListener('load', () => { checkScreen() })
 //kiem tra dang nhap
 const like_news_btn = document.querySelector('.like-news-btn');
 like_news_btn.addEventListener('click', (e) => {

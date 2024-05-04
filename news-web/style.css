@@ -217,7 +217,7 @@ main .more-news aside div a {
 
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
     main .more-news article {
         display: flex;
         flex-direction: column;

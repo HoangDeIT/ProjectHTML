@@ -90,3 +90,18 @@ main .like-news aside div a {
         display: flex;
     }
 }
+
+@media only screen and (max-width: 600px) {
+
+    main section img {
+        width: 50% !important;
+    }
+
+
+    main .like-news section article {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
+    }
+}

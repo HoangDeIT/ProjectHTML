@@ -73,3 +73,4 @@ const checkScreen = () => {
 
 }
 window.addEventListener('resize', () => { checkScreen() })
+window.addEventListener('load', () => { checkScreen() })
