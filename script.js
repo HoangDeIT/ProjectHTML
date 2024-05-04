@@ -97,6 +97,8 @@ const forgot_form = document.querySelector('.forgot-pass');
 const forgot_form_data = document.querySelectorAll('.forgot-pass .data input')
 const recoverPass_form = document.querySelector('.recoverPass-form');
 const recoverPass_form_data = document.querySelectorAll('.recoverPass-form .data input');
+const UserData_login = document.querySelectorAll('.login-form .data input');
+const UserData_signup = document.querySelectorAll('.signup-form .data input');
 login_btn.forEach((btn, index) => {
     btn.addEventListener('click', () => {
         login_form.classList.remove('hidden');
@@ -121,6 +123,15 @@ close_btn.forEach((btn) => {
         myacc_form.classList.add('hidden');
         forgot_form.classList.add('hidden');
         recoverPass_form.classList.add('hidden');
+        UserData_login.forEach((item) => {
+            item.value = '';
+        })
+        UserData_signup.forEach((item) => {
+            item.value = '';
+        })
+        forgot_form_data.forEach((item) => {
+            item.value = '';
+        })
         blur.classList.add('hidden');
     })
 
@@ -135,8 +146,7 @@ forgot_btn.addEventListener('click', () => {
     forgot_form.classList.remove('hidden');
 })
 //User data
-const UserData_login = document.querySelectorAll('.login-form .data input');
-const UserData_signup = document.querySelectorAll('.signup-form .data input');
+
 
 const Submit_btn = document.querySelectorAll('.signup-login-form .submit input[type=submit]');
 const errorMess = document.querySelectorAll('.signup-login-form form .data span')
@@ -259,6 +269,8 @@ Submit_btn.forEach((btn, index) => btn.addEventListener('click', () => {
             }
             UserData_signup.forEach((item) => {
                 item.value = '';
+                item.classList.remove('sucess');
+                item.classList.remove('error');
             })
             let localStorageData = localStorage.getItem('dataUser');
             let localStorageDataArray = JSON.parse(localStorageData);
@@ -495,60 +507,143 @@ window.addEventListener('load', () => {
     }
 })
 //Like news
-let News = [{
-    ID: "ID0001",
-    Name: "Tại sao xe điện mặt trời không xuất hiện trên đường?",
-    Topic: "Đời Sống",
-    Summary: "Những trở ngại trong việc sản xuất điện tại chỗ và giá thành lắp đặt khiến xe điện mặt trời rất khó phổ biến ở hiện tại.",
-    SrcImg: "../../images/Xe-dien.jpg",
-    SrcNews: "../news/taisaoxedien.html",
-    By: "Nguyen De"
-},
-{
-    ID: "ID0002",
-    Name: "Cha đẻ của khẩu súng máy đầu tiên trên thế giới",
-    Topic: "Lịch Sử",
-    Summary: "Súng Puckle ra đời vào năm 1718 có thể bắn 9 phát liên tục nhưng không thành công về mặt thương mại do vấn đề kíp nổ",
-    SrcImg: "../../images/Sung.jpg",
-    SrcNews: "../news/Chadecuakhausung.html",
-    By: "Nguyen De"
-},
-{
-    ID: "ID0003",
-    Name: "Lần đầu quan sát 'cầu vồng' ở ngoại hành tinh",
-    Topic: "Vũ Trụ",
-    Summary: "Kính viễn vọng không gian CHEOPS phát hiện những vòng tròn ánh sáng đồng tâm với màu cầu vồng ở WASP-76b, ngoại hành tinh có mưa sắt.",
-    SrcImg: "../../images/HanhTinh.jpg",
-    SrcNews: "../news/Landauquansat.html",
-    By: "Nguyen De"
-},
-{
-    ID: "ID0004",
-    Name: "Thử nghiệm tăng sáng mây giúp Trái Đất nguội đi",
-    Topic: "Trái Đất",
-    Summary: "Nhóm chuyên gia tại Đại học Washington dùng máy phun chuyên dụng phun hạt muối biển siêu nhỏ lên mây trên biển, giúp chuyển hướng ánh sáng Mặt Trời.",
-    SrcImg: "../../images/ThuNghiemTangSang.jpg",
-    SrcNews: "../news/Thunghiemtangsang.html",
-    By: "Nguyen De"
-},
-{
-    ID: "ID0005",
-    Name: "NASA tìm ra lỗi trục trặc trên tàu vũ trụ cách 24 tỷ km",
-    Topic: "Vũ Trụ",
-    Summary: "Tàu Voyager 1 truyền dữ liệu vô nghĩa từ cuối tháng 11 năm ngoái do một con chip trên tàu có thể bị hạt năng lượng cao va trúng.",
-    SrcImg: "../../images/NASA.jpg",
-    SrcNews: "../news/Nasatimraloitructrac.html",
-    By: "Nguyen De"
-},
-{
-    ID: "ID0006",
-    Name: "Tại sao Biển Chết siêu mặn?",
-    Topic: "Trái Đất",
-    Summary: "Biển Chết có độ mặn cao gấp gần 10 lần đại dương do nước bay hơi để lại muối tích tụ trong nước và lắng đọng dưới đáy hồ.",
-    SrcImg: "../../images/BienChet.jpg",
-    SrcNews: "../news/Taisaobienchetsieuman.html",
-    By: "Nguyen De"
-}
+let News = [
+    {
+        ID: "ID0001",
+        Name: "AI - trò chơi 'đốt tiền hoặc bị đào thải'",
+        Topic: "Công Nghệ",
+        Summary: "Khi cơn sốt AI tăng cao, các ông lớn chi hàng tỷ USD để xây dựng các mô hình ngôn ngữ, còn công ty nhỏ phải thu hẹp quy mô.",
+        SrcImg: "../../images/Alsmartphone.jpg",
+        SrcNews: "../news/Altrochoidottien.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0002",
+        Name: "Ánh sáng bí ẩn dẫn đường cho thủy thủ trên biển",
+        Topic: "Kì lạ",
+        Summary: "Giới nghiên cứu vẫn chưa tìm ra cách giải thích về hiện tượng phát sáng kỳ lạ trên đại dương có thể giúp thủy thủ định hướng cách đây hàng nghìn năm.",
+        SrcImg: "../../images/theboat.jpg",
+        SrcNews: "../news/Anhsangbian.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0003",
+        Name: "Bí ẩn vệt sáng đỏ xuất hiện trên trời 1.400 năm trước",
+        Topic: "Kì Lạ",
+        Summary: "Các nhà khoa học cho rằng vệt sáng giống đuôi gà lôi xuất hiện năm 620 là cực quang chịu ảnh hưởng của một cơn bão từ mạnh.",
+        SrcImg: "../../images/redsky.jpg",
+        SrcNews: "../news/Bianvetsangdo.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0004",
+        Name: "Cha đẻ của khẩu súng máy đầu tiên trên thế giới",
+        Topic: "Lịch Sử",
+        Summary: "Súng Puckle ra đời vào năm 1718 có thể bắn 9 phát liên tục nhưng không thành công về mặt thương mại do vấn đề kíp nổ",
+        SrcImg: "../../images/Sung.jpg",
+        SrcNews: "../news/Chadecuakhausung.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0005",
+        Name: "Gần 140 nhà khoa học chia sẻ nghiên cứu về vật lý",
+        Topic: "Vật Lí",
+        Summary: "Các nhà khoa học Việt Nam và quốc tế giới thiệu 114 nghiên cứu mới về công nghệ quang học, địa chất, thiên văn… tại Hội nghị vật lý, vật lý kỹ thuật lần 8.",
+        SrcImg: "../../images/themanwatching.jpg",
+        SrcNews: "../news/gan140nhakhoahoc.html",
+        By: "Nguyen De"
+    },
+
+    {
+        ID: "ID0006",
+        Name: "Giảm nhiệt cho smartphone khi dùng ngoài trời nắng nóng",
+        Topic: "Công Nghệ",
+        Summary: "Smartphone thường bị quá nhiệt khi ở ngoài trời nắng, người dùng nên hạn chế kết nối tốc độ cao hay camera để giảm nhiệt.",
+        SrcImg: "../../images/smartphone_high.jpg",
+        SrcNews: "../news/giamnhietsmartphone.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0007",
+        Name: "Lần đầu quan sát 'cầu vồng' ở ngoại hành tinh",
+        Topic: "Vũ Trụ",
+        Summary: "Kính viễn vọng không gian CHEOPS phát hiện những vòng tròn ánh sáng đồng tâm với màu cầu vồng ở WASP-76b, ngoại hành tinh có mưa sắt.",
+        SrcImg: "../../images/HanhTinh.jpg",
+        SrcNews: "../news/Landauquansat.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0008",
+        Name: "Lý giải hiện tượng cực quang dưới góc nhìn Vật lý phổ thông",
+        Topic: "Vật Lí",
+        Summary: "Bằng cách áp dụng các kiến thức Vật lý khối THPT, học sinh có thể lý giải hiện tượng cực quang và quá trình hình thành.",
+        SrcImg: "../../images/beutifulsky.jpg",
+        SrcNews: "../news/Lygiaihientuongcucquang.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0009",
+        Name: "NASA tìm ra lỗi trục trặc trên tàu vũ trụ cách 24 tỷ km",
+        Topic: "Vũ Trụ",
+        Summary: "Tàu Voyager 1 truyền dữ liệu vô nghĩa từ cuối tháng 11 năm ngoái do một con chip trên tàu có thể bị hạt năng lượng cao va trúng.",
+        SrcImg: "../../images/NASA.jpg",
+        SrcNews: "../news/Nasatimraloitructrac.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0010",
+        Name: "Nhà khoa học thảo luận về phân cực bụi vũ trụ'",
+        Topic: "Vật Lí",
+        Summary: "Các nhà khoa học đến từ 12 quốc gia và vùng lãnh thổ cùng trao đổi về các xu hướng nghiên cứu mới tại hội thảo 'Vật lý thiên văn SAGI lần thứ 2 về phân cực bụi' diễn ra trong 5 ngày.",
+        SrcImg: "../../images/themanmicro.jpg",
+        SrcNews: "../news/nhakhoahochaoluan.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0011",
+        Name: "Nhiều người bị khóa Apple ID",
+        Topic: "Công Nghệ",
+        Summary: "Nhiều người dùng thiết bị Apple cho biết bất ngờ bị khóa tài khoản và yêu cầu đặt lại mật khẩu Apple ID.",
+        SrcImg: "../../images/KhoaIDapple.jpg",
+        SrcNews: "../news/Nhieunguoibikhoaid.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0012",
+        Name: "Tại sao Biển Chết siêu mặn?",
+        Topic: "Trái Đất",
+        Summary: "Biển Chết có độ mặn cao gấp gần 10 lần đại dương do nước bay hơi để lại muối tích tụ trong nước và lắng đọng dưới đáy hồ.",
+        SrcImg: "../../images/BienChet.jpg",
+        SrcNews: "../news/Taisaobienchetsieuman.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0013",
+        Name: "Tại sao xe điện mặt trời không xuất hiện trên đường?",
+        Topic: "Đời Sống",
+        Summary: "Những trở ngại trong việc sản xuất điện tại chỗ và giá thành lắp đặt khiến xe điện mặt trời rất khó phổ biến ở hiện tại.",
+        SrcImg: "../../images/Xe-dien.jpg",
+        SrcNews: "../news/taisaoxedien.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0014",
+        Name: "Thử nghiệm tăng sáng mây giúp Trái Đất nguội đi",
+        Topic: "Trái Đất",
+        Summary: "Nhóm chuyên gia tại Đại học Washington dùng máy phun chuyên dụng phun hạt muối biển siêu nhỏ lên mây trên biển, giúp chuyển hướng ánh sáng Mặt Trời.",
+        SrcImg: "../../images/ThuNghiemTangSang.jpg",
+        SrcNews: "../news/Thunghiemtangsang.html",
+        By: "Nguyen De"
+    },
+    {
+        ID: "ID0015",
+        Name: "'Vòng xoáy đêm' phát sáng trên bầu trời Hawaii",
+        Topic: "Kì Lạ",
+        Summary: "Sau khi hoàn thành nhiệm vụ phóng vệ tinh, tên lửa Falcon 9 của SpaceX gây ra hiện tượng kỳ lạ trên bầu trời đêm hôm 17/4.",
+        SrcImg: "../../images/sky.jpg",
+        SrcNews: "../news/Vongxoaydem.html",
+        By: "Nguyen De"
+    }
 ]
 
 window.addEventListener('load', () => {

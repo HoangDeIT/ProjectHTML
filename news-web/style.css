@@ -152,7 +152,7 @@ main .more-news aside div a {
     color: black;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1650px) {
     main .main-section {
         grid-template-areas:
             'main-article side-article1'
