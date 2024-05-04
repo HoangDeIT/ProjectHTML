@@ -649,6 +649,15 @@ let News = [
 window.addEventListener('load', () => {
     localStorage.setItem('News', JSON.stringify(News));
     checkScreen();
+    let user = [{
+        "UserName": 'Admin',
+        "Email": 'Admin@gmail.com',
+        "Name": 'Admin',
+        "BirthDay": '2000-01-01',
+        "Password": 'Admin123',
+        "LikeNews": []
+    }]
+    localStorage.setItem('dataUser', JSON.stringify(user));
 })
 const like_news_btn = document.querySelector('.like-news-btn');
 like_news_btn.addEventListener('click', (e) => {
