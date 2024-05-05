@@ -132,6 +132,9 @@ close_btn.forEach((btn) => {
         forgot_form_data.forEach((item) => {
             item.value = '';
         })
+        recoverPass_form_data.forEach((item) => {
+            item.data = '';
+        })
         blur.classList.add('hidden');
     })
 
@@ -150,7 +153,7 @@ forgot_btn.addEventListener('click', () => {
 
 const Submit_btn = document.querySelectorAll('.signup-login-form .submit input[type=submit]');
 const errorMess = document.querySelectorAll('.signup-login-form form .data span')
-const popup_myacc_data = document.querySelectorAll('.popup-myacc form .data input')
+const popup_myacc_data = document.querySelectorAll('.popup-myacc form .data input');
 let checkun = false, checke = false, checkn = false, checkbd = false, checkp = false, checkcp = false;
 let recover_User = '';
 const UserNamecheck = (username) => {
@@ -235,7 +238,8 @@ const checkDate = (Birthday) => {
     if (bd > d) return false;
     else return true;
 }
-Submit_btn.forEach((btn, index) => btn.addEventListener('click', () => {
+Submit_btn.forEach((btn, index) => btn.addEventListener('click', (e) => {
+    e.preventDefault();
     if (index === 0) {
         let username = UserData_login[0].value;
         let pass = UserData_login[1].value;
@@ -278,6 +282,8 @@ Submit_btn.forEach((btn, index) => btn.addEventListener('click', () => {
             localStorageDataArray = [...localStorageDataArray, newUser];
             localStorage.setItem('dataUser', JSON.stringify(localStorageDataArray));
             alert("Tạo tài khoản thành công")
+            signup_form.classList.add('hidden');
+            blur.classList.add('hidden');
         } else {
             alert("Kiểm tra lại thông tin")
         }
@@ -399,7 +405,8 @@ const check_data_forgot_form = (User, Email, Name, BirthDay) => {
     return check;
 }
 
-forgot_form.querySelector('.submit input').addEventListener('click', () => {
+forgot_form.querySelector('.submit input').addEventListener('click', (e) => {
+    e.preventDefault();
     let data = [];
     forgot_form_data.forEach((element, index) => {
         data[index] = element.value;
@@ -409,6 +416,9 @@ forgot_form.querySelector('.submit input').addEventListener('click', () => {
         recover_User = data[0];
         forgot_form.classList.add('hidden');
         recoverPass_form.classList.remove('hidden');
+        forgot_form_data.forEach((element) => {
+            element.value = '';
+        });
         login_form.classList.add('hidden');
         recoverPass_form_data.forEach((form, index) => {
             if (index === 0) {
@@ -416,7 +426,7 @@ forgot_form.querySelector('.submit input').addEventListener('click', () => {
                     if (!checkPassword(recoverPass_form_data[index].value)) {
                         recoverPass_form_data[index].classList.add('error');
                         recoverPass_form_data[index].classList.remove('sucess');
-                        errorMess[6].innerHTML = 'Mật khẩu không hợp lệ'
+                        errorMess[6].innerHTML = 'Mật khẩu phải chứa chữ thường ,in hoa và số'
                         checkp = false;
                     } else {
                         recoverPass_form_data[index].classList.add('sucess');
@@ -447,7 +457,8 @@ forgot_form.querySelector('.submit input').addEventListener('click', () => {
     else alert("Thông tin không hợp lệ")
 }
 )
-recoverPass_form.querySelector('.submit input').addEventListener('click', () => {
+recoverPass_form.querySelector('.submit input').addEventListener('click', (e) => {
+    e.preventDefault();
     if (checkp && checkcp) {
         let dataUser = localStorage.getItem('dataUser');
         let dataUserArray = JSON.parse(dataUser);
@@ -456,6 +467,8 @@ recoverPass_form.querySelector('.submit input').addEventListener('click', () => 
                 element.Password = recoverPass_form_data[0].value;
             }
         });
+        recoverPass_form_data[0].value = '';
+        recoverPass_form_data[1].value = '';
         localStorage.setItem('dataUser', JSON.stringify(dataUserArray));
         alert("Cập nhật mật khẩu thành công");
         recoverPass_form.classList.add('hidden');

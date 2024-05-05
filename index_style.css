@@ -338,6 +338,10 @@ form .submit:hover .inner {
     color: red;
 }
 
+.recoverPass-form form .data span {
+    color: red;
+}
+
 .signup-login-form {
     border-radius: 20px;
 }
