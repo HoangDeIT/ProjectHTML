@@ -657,7 +657,9 @@ window.addEventListener('load', () => {
         "Password": 'Admin123',
         "LikeNews": []
     }]
-    localStorage.setItem('dataUser', JSON.stringify(user));
+    if (!checkUserName('Admin')) {
+        localStorage.setItem('dataUser', JSON.stringify(user));
+    }
 })
 const like_news_btn = document.querySelector('.like-news-btn');
 like_news_btn.addEventListener('click', (e) => {
