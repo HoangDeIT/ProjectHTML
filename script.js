@@ -657,7 +657,7 @@ window.addEventListener('load', () => {
         "Password": 'Admin123',
         "LikeNews": []
     }]
-    if (!checkUserName('Admin')) {
+    if (!UserNamecheck('Admin')) {
         localStorage.setItem('dataUser', JSON.stringify(user));
     }
 })

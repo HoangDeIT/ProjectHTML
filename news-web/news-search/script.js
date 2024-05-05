@@ -6,7 +6,7 @@ const search = (e) => {
     render.innerHTML = '';
     let check = false;
     News.forEach(news => {
-        if (news.Name.includes(search_box_value)) {
+        if (news.Name.toLowerCase().includes(search_box_value.toLowerCase())) {
             check = true;
             let article = document.createElement('article');
             article.id = news.ID;
