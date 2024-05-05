@@ -103,6 +103,19 @@ main .main-section small {
     line-height: 1.3;
 }
 
+main .main-section .main-article div,
+main .main-section .side-article div {
+    width: 100%;
+}
+
+
+
+main .main-section .main-article img {
+    width: 100%;
+    height: auto;
+    min-width: 99%;
+}
+
 /* section trend news */
 main .section-trendnews article {
     width: 332px;
